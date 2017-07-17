@@ -81,6 +81,7 @@ specialCharMap = {
     "bang": "!",
     "question": "?",
     "caret": "^",
+    "tilde": "~",
     # some other symbols I haven't imported yet, lazy sorry
     # 'ampersand': Key('ampersand'),
     # 'apostrophe': Key('apostrophe'),
@@ -107,7 +108,6 @@ specialCharMap = {
     # #'semicolon': Key('semicolon'),
     # 'slash': Key('slash'),
     # '[single] quote': Key('squote'),
-    # 'tilde': Key('tilde'),
     # 'underscore | score': Key('underscore'),
 }
 
