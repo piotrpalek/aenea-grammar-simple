@@ -18,7 +18,7 @@ class WindowManagerRule(MappingRule):
         winPrefix + " term": Key(modKey + "-enter"),
         winPrefix + " vertical term": Key(modKey + "-v, a-enter"),
         winPrefix + " horizontal term": Key(modKey + "-h, a-enter"),
-        winPrefix + " close": Key(modKey + "s-q"),
+        winPrefix + " close": Key(modKey + "-q"),
         winPrefix + " launch": Key(modKey + "-d"),
     }
     extras = [

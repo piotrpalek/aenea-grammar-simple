@@ -8,6 +8,7 @@ import words
 import terminal
 import vim
 import WindowManager
+import Abbreviate
 
 release = Key("shift:up, ctrl:up, alt:up")
 
@@ -19,6 +20,7 @@ alternatives.append(RuleRef(rule=words.NopeFormatRule()))
 alternatives.append(RuleRef(rule=terminal.TerminalRule()))
 alternatives.append(RuleRef(rule=vim.VimRule()))
 alternatives.append(RuleRef(rule=WindowManager.WindowManagerRule()))
+alternatives.append(RuleRef(rule=Abbreviate.AbbreviateRule()))
 root_action = Alternative(alternatives)
 
 sequence = Repetition(root_action, min=1, max=16, name="sequence")
