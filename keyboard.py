@@ -62,9 +62,9 @@ specialCharMap = {
     "star": "*",
     "colon": ":",
     "(semicolon|semi-colon)": ";",
-    "at symbol": "@",
-    "[double] quote": '"',
-    "single quote": "'",
+    "at sym": "@",
+    "quote": '"',
+    "sing quote": "'",
     "hash": "#",
     "dollar": "$",
     "percent": "%",
@@ -155,17 +155,6 @@ pressKeyMap.update(controlKeyMap)
 pressKeyMap.update(functionKeyMap)
 
 
-def handle_word(text):
-    #words = map(list, text)
-    #print text
-    words = str(text).split()
-    print 'word (', words, ')'
-    if len(words) > 0:
-        Text(words[0]).execute()
-        if len(words) > 1:
-            Mimic(' '.join(words[1:])).execute()
-
-
 grammarCfg = Config("multi edit")
 grammarCfg.cmd = Section("Language section")
 grammarCfg.cmd.map = Item(
@@ -206,7 +195,6 @@ grammarCfg.cmd.map = Item(
 
         'scratch [<n>]':     Key('backspace:%(n)d'),
 
-        'word <text>': Function(handle_word),
         '(number|num) <num>': Text("%(num)d"),
 
         "[<text>] (go to sleep|cancel and sleep) [<text2>]": Function(cancel_and_sleep),  # @IgnorePep8
