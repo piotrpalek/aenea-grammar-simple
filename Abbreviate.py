@@ -49,6 +49,7 @@ abbreviation = {
     "package": "pkg",
     "parameter": "param",
     "parameters": "params",
+    "performance": "perf",
     "pixel": "px",
     "position": "pos",
     "point": "pt",

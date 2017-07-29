@@ -35,10 +35,20 @@ tmuxCommand = {}
 for command in tmuxCommandArray:
     tmuxCommand[command] = command
 
+aptCommandArray = [
+    'update',
+    'install',
+    'remove',
+]
+aptCommand = {}
+for command in aptCommandArray:
+    aptCommand[command] = command
+
 class TerminalRule(MappingRule):
     prefix = "term "
     mapping = {
         prefix + "sudo": Text("sudo "),
+        prefix + "apt <aptCommand>": Text("apt %(aptCommand)s "),
         prefix + "vim": Text("vim "),
         prefix + "direct": Text("cd "),
         prefix + "copy": Text("cp "),
@@ -48,12 +58,15 @@ class TerminalRule(MappingRule):
         prefix + "move": Text("mv "),
         prefix + "remove": Text("rm "),
         prefix + "(git|get) <gitCommand>": Text("git %(gitCommand)s "),
-        prefix + "mux <tmuxCommand>": Text("tmux %(tmuxCommand)s "),
+        prefix + "see tags": Text("ctags"),
+        prefix + "tee mux <tmuxCommand>": Text("tmux %(tmuxCommand)s "),
         prefix + "kill": Key("c-c"),
+        prefix + "suspend": Key("c-z"),
     }
     extras = [
         Dictation("text"),
         IntegerRef("n", 1, 100),
+        Choice('aptCommand', aptCommand),
         Choice('gitCommand', gitCommand),
         Choice('tmuxCommand', tmuxCommand),
     ]

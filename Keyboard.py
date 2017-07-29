@@ -48,7 +48,7 @@ symbolMap = {
     "(semicolon|semi-colon)": ";",
     "at sym": "@",
     "quote": '"',
-    "sing quote": "'",
+    "sote": "'",
     "hash": "#",
     "dollar": "$",
     "percent": "%",
