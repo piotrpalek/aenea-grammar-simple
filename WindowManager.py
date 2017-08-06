@@ -1,6 +1,10 @@
 # commands for controlling various programs
 
 from aenea import *
+from dragonfly.actions.keyboard import keyboard
+from dragonfly.actions.typeables import typeables
+if 'semicolon' not in typeables:
+  typeables["semicolon"] = keyboard.get_typeable(char=';')
 
 class WindowManagerRule(MappingRule):
     modKey = "a"
@@ -12,7 +16,7 @@ class WindowManagerRule(MappingRule):
         winPrefix + " up": Key(modKey + "-l"),
         winPrefix + " down": Key(modKey + "-k"),
         winPrefix + " lock": Key(modKey + "-d") + Text("i3lock") + Key("enter"),
-        winPrefix + " full-screen": Key(modKey + "-f"),
+        winPrefix + " full": Key(modKey + "-f"),
         winPrefix + " horizontal": Key(modKey + "-h"),
         winPrefix + " vertical": Key(modKey + "-v"),
         winPrefix + " term": Key(modKey + "-enter"),

@@ -17,8 +17,8 @@ class VimRule(MappingRule):
         prefix + "up": Key('c-u'),
         prefix + "down": Key('c-d'),
         prefix + "toggle": Key('c-w, c-w'),
-        prefix + "jump": Key('c-rbracket'),
-        prefix + "back": Key('c-t'),
+        prefix + "push": Key('c-rbracket'),
+        prefix + "pop": Key('c-t'),
     }
     extras = [
         Dictation("text"),

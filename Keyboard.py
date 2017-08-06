@@ -64,13 +64,13 @@ symbolMap = {
 }
 
 bracketMap = {
-    "langle": "langle",
+    "lang": "langle",
+    "rang": "rangle",
     "lace": "lbrace",
-    "lack": "lbracket",
-    "len": "lparen",
-    "rangle": "rangle",
     "race": "rbrace",
+    "lack": "lbracket",
     "rack": "rbracket",
+    "len": "lparen",
     "ren": "rparen",
 }
 
@@ -82,9 +82,13 @@ class KeyboardRule(MappingRule):
         "(number|num) <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "act": Key("escape"),
-        "space": Key("space"),
+        "ace": Key("space"),
         "slap": Key("enter"),
+        "insert": Key("insert"),
         "tab": Key("tab"),
+        "control": Key("ctrl:down/3"),
+        "shift": Key("shift:down/3"),
+        "alt": Key("alt:down/3"),
     }
     extras = [
         Dictation("text"),
