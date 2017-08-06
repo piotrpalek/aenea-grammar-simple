@@ -74,6 +74,26 @@ bracketMap = {
     "ren": "rparen",
 }
 
+keyMap = {
+    'F one': 'f1',
+    'F two': 'f2',
+    'F three': 'f3',
+    'F four': 'f4',
+    'F five': 'f5',
+    'F six': 'f6',
+    'F seven': 'f7',
+    'F eight': 'f8',
+    'F nine': 'f9',
+    'F ten': 'f10',
+    'F eleven': 'f11',
+    'F twelve': 'f12',
+    'insert': 'insert',
+    'up': 'up',
+    'down': 'down',
+    'right': 'right',
+    'left': 'left',
+}
+
 class KeyboardRule(MappingRule):
     mapping = {
         "<letters>": Text("%(letters)s"),
@@ -84,7 +104,7 @@ class KeyboardRule(MappingRule):
         "act": Key("escape"),
         "ace": Key("space"),
         "slap": Key("enter"),
-        "insert": Key("insert"),
+        "key <key>": Key("%(key)s"),
         "tab": Key("tab"),
         "control": Key("ctrl:down/3"),
         "shift": Key("shift:down/3"),
@@ -97,6 +117,7 @@ class KeyboardRule(MappingRule):
         Choice("letters", letterMap),
         Choice("symbols", symbolMap),
         Choice("brackets", bracketMap),
+        Choice("key", keyMap),
     ]
     defaults = {
         "n": 1,

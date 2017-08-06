@@ -26,14 +26,11 @@ gitCommand = {}
 for command in gitCommandArray:
     gitCommand[command] = command
 
-tmuxCommandArray = [
-    'new',
-    'list',
-    'attach',
-]
-tmuxCommand = {}
-for command in tmuxCommandArray:
-    tmuxCommand[command] = command
+tmuxCommand= {
+    'new': 'new',
+    'list': 'ls',
+    'attach': 'attach',
+}
 
 aptCommandArray = [
     'update',
