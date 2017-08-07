@@ -5,9 +5,9 @@ from aenea import *
 
 import Keyboard
 import TMux
-import words
-import terminal
-import vim
+import Words
+import Terminal
+import Vim
 import WindowManager
 import Abbreviate
 import Vocabulary
@@ -17,11 +17,11 @@ release = Key("shift:up, ctrl:up, alt:up")
 alternatives = []
 alternatives.append(RuleRef(rule=Keyboard.KeyboardRule()))
 alternatives.append(RuleRef(rule=TMux.TMuxRule()))
-alternatives.append(RuleRef(rule=words.FormatRule()))
-alternatives.append(RuleRef(rule=words.ReFormatRule()))
-alternatives.append(RuleRef(rule=words.NopeFormatRule()))
-alternatives.append(RuleRef(rule=terminal.TerminalRule()))
-alternatives.append(RuleRef(rule=vim.VimRule()))
+alternatives.append(RuleRef(rule=Words.FormatRule()))
+alternatives.append(RuleRef(rule=Words.ReFormatRule()))
+alternatives.append(RuleRef(rule=Words.NopeFormatRule()))
+alternatives.append(RuleRef(rule=Terminal.TerminalRule()))
+alternatives.append(RuleRef(rule=Vim.VimRule()))
 alternatives.append(RuleRef(rule=WindowManager.WindowManagerRule()))
 alternatives.append(RuleRef(rule=Abbreviate.AbbreviateRule()))
 alternatives.append(RuleRef(rule=Vocabulary.VocabularyRule()))

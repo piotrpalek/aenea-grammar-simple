@@ -15,6 +15,7 @@ class TMuxRule(MappingRule):
         prefix + "zoom": Key(tmuxPrefix + ", z"),
         prefix + "vertical split": Key(tmuxPrefix + ", percent"),
         prefix + "horizontal split": Key(tmuxPrefix + ", dquote"),
+        prefix + "toggle": Key(tmuxPrefix + ", o"),
     }
     extras = [
         Dictation("text"),

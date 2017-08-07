@@ -51,6 +51,7 @@ class TerminalRule(MappingRule):
         prefix + "copy": Text("cp "),
         prefix + "list": Text("ls "),
         prefix + "make": Text("make "),
+        prefix + "man": Text("man "),
         prefix + "mutt": Text("mutt "),
         prefix + "(grep|grip)": Text("grep "),
         prefix + "move": Text("mv "),
