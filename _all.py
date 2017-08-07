@@ -4,6 +4,7 @@ from natlink import setMicState
 from aenea import *
 
 import Keyboard
+import TMux
 import words
 import terminal
 import vim
@@ -15,6 +16,7 @@ release = Key("shift:up, ctrl:up, alt:up")
 
 alternatives = []
 alternatives.append(RuleRef(rule=Keyboard.KeyboardRule()))
+alternatives.append(RuleRef(rule=TMux.TMuxRule()))
 alternatives.append(RuleRef(rule=words.FormatRule()))
 alternatives.append(RuleRef(rule=words.ReFormatRule()))
 alternatives.append(RuleRef(rule=words.NopeFormatRule()))
