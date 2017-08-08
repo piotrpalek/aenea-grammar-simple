@@ -65,6 +65,7 @@ class TerminalRule(MappingRule):
         prefix + "umount": Text("umount "),
         prefix + "i three message": Text("i3-msg "),
         prefix + "secure shell": Text("ssh "),
+        prefix + "exit": Text("exit "),
     }
     extras = [
         Dictation("text"),

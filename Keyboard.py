@@ -37,33 +37,29 @@ for letter in letterMap:
 letterMap.update(upperLetterMap)
 
 symbolMap = {
-    "bar": "|",
-    "dash": "-",
-    "(dot|dit)": ".",
-    "comma": ",",
-    "backslash": "\\",
-    "score": "_",
-    "star": "*",
-    "colon": ":",
-    "(semicolon|semi-colon)": ";",
-    "at sym": "@",
-    "quote": '"',
-    "sote": "'",
-    "hash": "#",
-    "dollar": "$",
-    "percent": "%",
-    "ampersand": "&",
-    "slash": "/",
-    "equal": "=",
-    "plus": "+",
-
-    "bang": "!",
-    "question": "?",
-    "caret": "^",
-    "tilde": "~",
-}
-
-bracketMap = {
+    "bar": "bar",
+    "dash": "hyphen",
+    "(dot|dit)": "dot",
+    "comma": "comma",
+    "backslash": "backslash",
+    "score": "underscore",
+    "star": "asterisk",
+    "colon": "colon",
+    "(semicolon|semi-colon)": "semicolon",
+    "at sym": "at",
+    "quote": "dquote",
+    "sote": "squote",
+    "hash": "hash",
+    "dollar": "dollar",
+    "percent": "percent",
+    "ampersand": "ampersand",
+    "slash": "slash",
+    "equal": "equal",
+    "plus": "plus",
+    "bang": "exclamation",
+    "question": "question",
+    "caret": "caret",
+    "tilde": "tilde",
     "lang": "langle",
     "rang": "rangle",
     "lace": "lbrace",
@@ -73,6 +69,7 @@ bracketMap = {
     "len": "lparen",
     "ren": "rparen",
 }
+letterMap.update(symbolMap)
 
 keyMap = {
     'F one': 'f1',
@@ -96,9 +93,7 @@ keyMap = {
 
 class KeyboardRule(MappingRule):
     mapping = {
-        "<letters>": Text("%(letters)s"),
-        "<symbols>": Text("%(symbols)s"),
-        "<brackets>": Key("%(brackets)s"),
+        "<letters>": Key("%(letters)s"),
         "(number|num) <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "act": Key("escape"),
@@ -106,17 +101,15 @@ class KeyboardRule(MappingRule):
         "slap": Key("enter"),
         "key <key>": Key("%(key)s"),
         "tab": Key("tab"),
-        "control": Key("ctrl:down/3"),
-        "shift": Key("shift:down/3"),
-        "alt": Key("alt:down/3"),
+        "troll <letters>": Key("ctrl:down/3, %(letters)s"),
+        "shift <letters>": Key("shift:down/3, %(letters)s"),
+        "alt <letters>": Key("alt:down/3, %(letters)s"),
     }
     extras = [
         Dictation("text"),
         IntegerRef("n", 1, 100),
         IntegerRef("num", 0, 1000000),
         Choice("letters", letterMap),
-        Choice("symbols", symbolMap),
-        Choice("brackets", bracketMap),
         Choice("key", keyMap),
     ]
     defaults = {
