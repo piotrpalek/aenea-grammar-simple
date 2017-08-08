@@ -69,6 +69,7 @@ abbreviation = {
     "revision": "rev",
     "ruby": "rb",
     "session aidee": "sid",  # "session id" didn't work for some reason.
+    "shell": "sh",
     "source": "src",
     "(special|specify|specific|specification)": "spec",
     "standard": "std",

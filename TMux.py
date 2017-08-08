@@ -12,15 +12,15 @@ class TMuxRule(MappingRule):
         prefix + "<n>": Key(tmuxPrefix + ", %(n)d"),
         prefix + "pains": Key(tmuxPrefix + ", q"),
         prefix + "pain <n>": Key(tmuxPrefix + ", q, %(n)d"),
-        prefix + "zoom": Key(tmuxPrefix + ", z"),
-        prefix + "vertical split": Key(tmuxPrefix + ", percent"),
-        prefix + "horizontal split": Key(tmuxPrefix + ", dquote"),
+        prefix + "full": Key(tmuxPrefix + ", z"),
+        prefix + "vertical split": Key(tmuxPrefix + ", dquote"),
+        prefix + "horizontal split": Key(tmuxPrefix + ", percent"),
         prefix + "toggle": Key(tmuxPrefix + ", o"),
         prefix + "scroll": Key(tmuxPrefix + ", lbracket"),
     }
     extras = [
         Dictation("text"),
-        IntegerRef("n", 1, 100),
+        IntegerRef("n", 0, 10),
     ]
     defaults = {
         "n": 1,

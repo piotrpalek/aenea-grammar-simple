@@ -69,11 +69,7 @@ class TerminalRule(MappingRule):
     }
     extras = [
         Dictation("text"),
-        IntegerRef("n", 1, 100),
         Choice('aptCommand', aptCommand),
         Choice('gitCommand', gitCommand),
         Choice('tmuxCommand', tmuxCommand),
     ]
-    defaults = {
-        "n": 1,
-    }

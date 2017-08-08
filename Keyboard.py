@@ -94,7 +94,7 @@ keyMap = {
 class KeyboardRule(MappingRule):
     mapping = {
         "<letters>": Key("%(letters)s"),
-        "(number|num) <num>": Text("%(num)d"),
+        "num <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "act": Key("escape"),
         "ace": Key("space"),
@@ -108,7 +108,7 @@ class KeyboardRule(MappingRule):
     extras = [
         Dictation("text"),
         IntegerRef("n", 1, 100),
-        IntegerRef("num", 0, 1000000),
+        IntegerRef("num", 0, 10000),
         Choice("letters", letterMap),
         Choice("key", keyMap),
     ]

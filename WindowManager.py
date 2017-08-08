@@ -20,14 +20,14 @@ class WindowManagerRule(MappingRule):
         winPrefix + " horizontal": Key(modKey + "-h"),
         winPrefix + " vertical": Key(modKey + "-v"),
         winPrefix + " term": Key(modKey + "-enter"),
-        winPrefix + " vertical term": Key(modKey + "-v, a-enter"),
-        winPrefix + " horizontal term": Key(modKey + "-h, a-enter"),
+        winPrefix + " vertical split": Key(modKey + "-v, a-enter"),
+        winPrefix + " horizontal split": Key(modKey + "-h, a-enter"),
         winPrefix + " close": Key(modKey + "-q"),
         winPrefix + " launch": Key(modKey + "-d"),
     }
     extras = [
         Dictation("text"),
-        IntegerRef("n", 1, 100),
+        IntegerRef("n", 1, 10),
     ]
     defaults = {
         "n": 1,

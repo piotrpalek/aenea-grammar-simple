@@ -11,11 +11,9 @@ class VimRule(MappingRule):
         prefix + "force quit": Text(":q!"),
         prefix + "vertical split": Text(":vs "),
         prefix + "no highlight": Text(":noh"),
+        prefix + "down": Key("c-d"),
+        prefix + "up": Key("c-u"),
     }
     extras = [
         Dictation("text"),
-        IntegerRef("n", 1, 100),
     ]
-    defaults = {
-        "n": 1,
-    }
