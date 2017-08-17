@@ -12,6 +12,7 @@ class VocabularyRule(MappingRule):
         prefix + "last name": Text("vilim"),
         prefix + "vim": Text("vim"),
         prefix + "mutt": Text("mutt"),
+        prefix + "github username": Text("matthewvilim"),
     }
     extras = [
         Dictation("text"),

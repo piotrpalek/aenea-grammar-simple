@@ -66,6 +66,10 @@ class TerminalRule(MappingRule):
         prefix + "i three message": Text("i3-msg "),
         prefix + "secure shell": Text("ssh "),
         prefix + "exit": Text("exit "),
+        prefix + "change mode": Text("chmod "),
+        prefix + "virtual private network": Text("vpn "),
+        prefix + "less": Text("less "),
+        prefix + "gee tee kay wave": Text("gtkwave "),
     }
     extras = [
         Dictation("text"),
