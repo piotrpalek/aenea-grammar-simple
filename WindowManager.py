@@ -10,14 +10,14 @@ class WindowManagerRule(MappingRule):
     modKey = "a"
     winPrefix = "win"
     mapping = {
-        winPrefix + " <n>": Key(modKey + "-%(n)d"),
-        winPrefix + " left": Key(modKey + "-j"),
-        winPrefix + " right": Key(modKey + "-semicolon"),
-        winPrefix + " up": Key(modKey + "-l"),
-        winPrefix + " down": Key(modKey + "-k"),
+        winPrefix + " [<n>]": Key(modKey + "-%(n)d"),
+        winPrefix + " left [<n>]": Key(modKey + "-h:%(n)d"),
+        winPrefix + " right [<n>]": Key(modKey + "-l:%(n)d"),
+        winPrefix + " up [<n>]": Key(modKey + "-k:%(n)d"),
+        winPrefix + " down [<n>]": Key(modKey + "-j:%(n)d"),
         winPrefix + " lock": Key("alt") + Key("s-q"),
         winPrefix + " full": Key(modKey + "-f"),
-        winPrefix + " horizontal": Key(modKey + "-h"),
+        winPrefix + " horizontal": Key(modKey + "-semicolon"),
         winPrefix + " vertical": Key(modKey + "-v"),
         winPrefix + " term": Key(modKey + "-enter"),
         winPrefix + " close": Key(modKey + "-q"),

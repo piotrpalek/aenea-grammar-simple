@@ -50,8 +50,8 @@ class NopeFormatRule(CompoundRule):
         return Key('backspace:' + str(lastFormatRuleLength))
 
 class ReFormatRule(CompoundRule):
-    spec = ('that was [upper | natural] ( proper | camel | rel-path | abs-path | score | sentence | '
-            'scope-resolve | jumble | dotword | dashword | natword | snakeword | brooding-narrative)')
+    spec = ('that was [upper | lower] ( proper | camel | rel-path | abs-path | score | sentence | '
+            'scope-resolve | jumble | dotword | dashword | natural | snakeword | brooding-narrative)')
 
     def value(self, node):
         global lastFormatRuleWords

@@ -5,15 +5,15 @@ from aenea import *
 letterMap = {
     "ark": "a",
     "brave": "b",
-    "car": "c",
+    "carve": "c",
     "deal": "d",
-    "end": "e",
+    "edge": "e",
     "fox": "f",
     "gag": "g",
     "hit": "h",
-    "itch": "i",
+    "inch": "i",
     "jab": "j",
-    "kill": "k",
+    "kin": "k",
     "lime": "l",
     "mike": "m",
     "noy": "n",
@@ -24,7 +24,7 @@ letterMap = {
     "soy": "s",
     "tay": "t",
     "unit": "u",
-    "veil": "v",
+    "verge": "v",
     "whisk": "w",
     "xerox": "x",
     "yank": "y",
@@ -46,7 +46,7 @@ symbolMap = {
     "star": "asterisk",
     "coal": "colon",
     "soul": "semicolon",
-    "at": "at",
+    "loco": "at",
     "quote": "dquote",
     "sote": "squote",
     "hash": "hash",
@@ -94,7 +94,7 @@ keyMap = {
 
 class KeyboardRule(MappingRule):
     mapping = {
-        "<letters>": Key("%(letters)s"),
+        "<letters> [<a>]": Key("%(letters)s:%(a)d"),
         "num <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "cape": Key("escape"),
@@ -109,10 +109,12 @@ class KeyboardRule(MappingRule):
     extras = [
         Dictation("text"),
         IntegerRef("n", 1, 100),
+        IntegerRef("a", 1, 10),
         IntegerRef("num", 0, 10000),
         Choice("letters", letterMap),
         Choice("key", keyMap),
     ]
     defaults = {
         "n": 1,
+        "a": 1,
     }
