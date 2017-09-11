@@ -10,8 +10,8 @@ class VocabularyRule(MappingRule):
         prefix + "nickname": Text("matt"),
         prefix + "first name": Text("matthew"),
         prefix + "last name": Text("vilim"),
-        prefix + "vim": Text("vim"),
-        prefix + "mutt": Text("mutt"),
+        prefix + "(them|vim)": Text("vim"),
+        prefix + "(month|mutt)": Text("mutt"),
         prefix + "github username": Text("matthewvilim"),
     }
     extras = [

@@ -47,6 +47,7 @@ abbreviation = {
     "library": "lib",
     "length": "len",
     "message": "msg",
+    "memory": "mem",
     "mount": "mnt",
     "number": "num",
     "object": "obj",

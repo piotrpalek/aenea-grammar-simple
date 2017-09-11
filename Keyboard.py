@@ -6,7 +6,7 @@ letterMap = {
     "ark": "a",
     "brave": "b",
     "carve": "c",
-    "deal": "d",
+    "dive": "d",
     "edge": "e",
     "fox": "f",
     "gag": "g",
@@ -27,7 +27,7 @@ letterMap = {
     "verge": "v",
     "whisk": "w",
     "xerox": "x",
-    "yank": "y",
+    "yarn": "y",
     "zoo": "z",
 }
 
@@ -37,7 +37,7 @@ for letter in letterMap:
 letterMap.update(upperLetterMap)
 
 symbolMap = {
-    "bar": "bar",
+    "spike": "bar",
     "dash": "hyphen",
     "dot": "dot",
     "comma": "comma",
@@ -56,10 +56,10 @@ symbolMap = {
     "slash": "slash",
     "equal": "equal",
     "plus": "plus",
-    "bang": "exclamation",
+    "clamor": "exclamation",
     "quest": "question",
     "carrot": "caret",
-    "tile": "tilde",
+    "tilde": "tilde",
     "lang": "langle",
     "rang": "rangle",
     "lace": "lbrace",
@@ -69,6 +69,9 @@ symbolMap = {
     "lair": "lparen",
     "rare": "rparen",
     "scratch": "backspace",
+    "slap": "enter",
+    "ace": "space",
+    "tarp": "tab",
 }
 letterMap.update(symbolMap)
 
@@ -101,15 +104,13 @@ class KeyboardRule(MappingRule):
         "ace": Key("space"),
         "slap": Key("enter"),
         "key <key>": Key("%(key)s"),
-        "tab": Key("tab"),
-        "train <letters>": Key("ctrl:down/3, %(letters)s"),
-        "shift <letters>": Key("shift:down/3, %(letters)s"),
-        "alt <letters>": Key("alt:down/3, %(letters)s"),
+        "train": Key("ctrl:down/3"),
+        "alt": Key("alt:down/3"),
     }
     extras = [
         Dictation("text"),
         IntegerRef("n", 1, 100),
-        IntegerRef("a", 1, 10),
+        IntegerRef("a", 1, 5),
         IntegerRef("num", 0, 10000),
         Choice("letters", letterMap),
         Choice("key", keyMap),
