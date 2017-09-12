@@ -68,7 +68,6 @@ symbolMap = {
     "rack": "rbracket",
     "lair": "lparen",
     "rare": "rparen",
-    "scratch": "backspace",
     "slap": "enter",
     "ace": "space",
     "tarp": "tab",
@@ -99,7 +98,8 @@ keyMap = {
 
 class KeyboardRule(MappingRule):
     mapping = {
-        "<letters> [<a>]": Key("%(letters)s:%(a)d"),
+        "<letters>": Key("%(letters)s"),
+        "<letters> wink": Key("%(letters)s:2"),
         "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "cape": Key("escape"),
@@ -111,13 +111,11 @@ class KeyboardRule(MappingRule):
     }
     extras = [
         Dictation("text"),
-        IntegerRef("n", 1, 100),
-        IntegerRef("a", 1, 5),
+        IntegerRef("n", 1, 50),
         IntegerRef("num", 0, 10000),
         Choice("letters", letterMap),
         Choice("key", keyMap),
     ]
     defaults = {
         "n": 1,
-        "a": 1,
     }

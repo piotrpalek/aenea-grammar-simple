@@ -8,36 +8,7 @@
 # Licensed under the LGPL, see <http://www.gnu.org/licenses/>
 #
 
-import aenea
-import aenea.misc
-import aenea.vocabulary
-import aenea.configuration
-import aenea.format
-
-from aenea import (
-    AeneaContext,
-    AppContext,
-    Alternative,
-    CompoundRule,
-    Dictation,
-    DictList,
-    DictListRef,
-    Grammar,
-    IntegerRef,
-    Literal,
-    ProxyAppContext,
-    MappingRule,
-    NeverContext,
-    Repetition,
-    RuleRef,
-    Sequence
-)
-
-from aenea import (
-    Key,
-    Text
-)
-
+from aenea import *
 
 lastFormatRuleLength = 0
 lastFormatRuleWords = []
