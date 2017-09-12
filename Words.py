@@ -80,7 +80,7 @@ class ReFormatRule(CompoundRule):
 
 class FormatRule(CompoundRule):
     spec = ('[upper | natural] ( proper | camel | rel-path | abs-path | score | sentence | '
-            'scope-resolve | jumble | dotword | dashword | natword | snakeword | brooding-narrative) [<dictation>] [bomb]')
+            'scope-resolve | jumble | dotword | dashword | natword | snakeword | brooding-narrative) <dictation> [bomb]')
     extras = [Dictation(name='dictation')]
 
     def value(self, node):

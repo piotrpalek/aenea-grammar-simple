@@ -18,7 +18,6 @@ alternatives = []
 alternatives.append(RuleRef(rule=Keyboard.KeyboardRule()))
 alternatives.append(RuleRef(rule=TMux.TMuxRule()))
 alternatives.append(RuleRef(rule=Words.FormatRule()))
-alternatives.append(RuleRef(rule=Words.ReFormatRule()))
 alternatives.append(RuleRef(rule=Words.NopeFormatRule()))
 alternatives.append(RuleRef(rule=Terminal.TerminalRule()))
 alternatives.append(RuleRef(rule=Vim.VimRule()))

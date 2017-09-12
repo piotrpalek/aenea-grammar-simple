@@ -93,12 +93,14 @@ keyMap = {
     'down': 'down',
     'right': 'right',
     'left': 'left',
+    'page up': 'pgup',
+    'page down': 'pgdown',
 }
 
 class KeyboardRule(MappingRule):
     mapping = {
         "<letters> [<a>]": Key("%(letters)s:%(a)d"),
-        "num <num>": Text("%(num)d"),
+        "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "cape": Key("escape"),
         "ace": Key("space"),

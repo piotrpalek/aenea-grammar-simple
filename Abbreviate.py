@@ -1,6 +1,7 @@
 from aenea import *
 
 abbreviation = {
+    "architecture": "arch",
     "administrator": "admin",
     "administrators": "admins",
     "application": "app",

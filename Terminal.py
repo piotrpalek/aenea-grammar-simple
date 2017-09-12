@@ -48,6 +48,7 @@ class TerminalRule(MappingRule):
         prefix + "apt <aptCommand>": Text("apt %(aptCommand)s "),
         prefix + "(them|vim)": Text("vim "),
         prefix + "dear": Text("cd "),
+        prefix + "dear up": Text("cd .."),
         prefix + "copy": Text("cp "),
         prefix + "list": Text("ls "),
         prefix + "make": Text("make "),
@@ -65,11 +66,11 @@ class TerminalRule(MappingRule):
         prefix + "umount": Text("umount "),
         prefix + "i three message": Text("i3-msg "),
         prefix + "secure shell": Text("ssh "),
-        prefix + "exit": Text("exit "),
+        prefix + "exit": Text("exit"),
         prefix + "change mode": Text("chmod "),
-        prefix + "virtual private network": Text("vpn "),
+        prefix + "VPN": Text("vpn"),
         prefix + "less": Text("less "),
-        prefix + "gee tee kay wave": Text("gtkwave "),
+        prefix + "GTK wave": Text("gtkwave "),
     }
     extras = [
         Dictation("text"),
