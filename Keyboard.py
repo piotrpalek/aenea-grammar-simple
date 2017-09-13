@@ -73,6 +73,25 @@ symbolMap = {
     "tab": "tab",
 }
 
+def formatGap(symbols, repeat, gap):
+    format = "%(s)s:%(r)d"
+    if gap:
+        if symbols in operators:
+            format = "space, " + format
+        format = format + ", space"
+    Key(format).execute({"s": symbols, "r": repeat})
+
+operators = [
+    "bar",
+    "hyphen",
+    "asterisk",
+    "percent",
+    "slash",
+    "equal",
+    "plus",
+    "caret",
+]
+
 keyMap = {
     'F one': 'f1',
     'F two': 'f2',
@@ -99,12 +118,15 @@ repeatMap = {
   "wink": 2,
   "blink": 3
 }
+ 
+gapMap = {
+    "gap": True,
+}
 
 class KeyboardRule(MappingRule):
     mapping = {
         "<letters> [<repeat>]": Key("%(letters)s:%(repeat)d"),
-        "<symbols> [<repeat>]": Key("%(symbols)s:%(repeat)d"),
-        "<symbols> [<repeat>] gap": Key("space, %(symbols)s:%(repeat)d, space"),
+        "<symbols> [<repeat>] [<gap>]": Function(formatGap),
         "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "cape": Key("escape"),
@@ -120,8 +142,10 @@ class KeyboardRule(MappingRule):
         Choice("symbols", symbolMap),
         Choice("key", keyMap),
         Choice("repeat", repeatMap),
+        Choice("gap", gapMap),
     ]
     defaults = {
         "n": 1,
         "repeat": 1,
+        "gap": False,
     }

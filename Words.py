@@ -152,14 +152,14 @@ FORMAT_TYPES_MAP = {
 }
 
 
-def format_brief(brief, formatType=None):
-		format_text(brief, formatType)
+def format_brief(brief, formatType, gap):
+		format_text(brief, formatType, gap)
 
-def format_vocab(vocab, formatType=None):
-		format_text(vocab, formatType)
+def format_vocab(vocab, formatType, gap):
+		format_text(vocab, formatType, gap)
 
 lastFormatLength = 0
-def format_text(text, formatType=None):
+def format_text(text, formatType, gap):
     global lastFormatLength
     if formatType:
         if type(formatType) != type([]):
@@ -174,6 +174,8 @@ def format_text(text, formatType=None):
                     result = str(text)
             method = FORMAT_TYPES_MAP[value]
             result = method(result)
+        if gap:
+            result = result + " "
         Text("%(text)s").execute({"text": result})
         lastFormatLength = len(result)
 
@@ -237,8 +239,8 @@ def lowercase_text(text):
 
 formatMap = {
     "(sentence|sense|since)": FormatTypes.sentenceCase,
-    "cam": FormatTypes.camelCase,
-    "pass": FormatTypes.pascalCase,
+    "camel": FormatTypes.camelCase,
+    "pascal": FormatTypes.pascalCase,
     "snake": FormatTypes.snakeCase,
     "yell snake": [FormatTypes.snakeCase, FormatTypes.upperCase],
     "yell": FormatTypes.upperCase,
@@ -366,11 +368,15 @@ vocabulary = {
 		"tucson": "tucson",
 }
 
+gapMap = {
+    "gap": True,
+}
+
 class WordRule(MappingRule):
     mapping = {
-				"<formatType> <text> [clash]": Function(format_text),
-				"[<formatType>] brief <brief>": Function(format_brief, formatType=FormatTypes.lowerCase),
-				"[<formatType>] cab <vocab>": Function(format_vocab, formatType=FormatTypes.lowerCase),
+				"<formatType> <text> [clash] [<gap>]": Function(format_text),
+				"[<formatType>] brief <brief> [<gap>]": Function(format_brief),
+				"[<formatType>] cab <vocab> [<gap>]": Function(format_vocab),
 				"scratch that": Function(format_scratch),
     }
     extras = [
@@ -378,4 +384,9 @@ class WordRule(MappingRule):
 				Choice("formatType", formatMap),
         Choice('brief', abbreviation),
         Choice('vocab', vocabulary),
+        Choice('gap', gapMap),
     ]
+    defaults = {
+        "formatType": FormatTypes.lowerCase,
+        "gap": False,
+    }
