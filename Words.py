@@ -273,6 +273,7 @@ abbreviation = {
     "(config|configuration)": "cfg",
     "context": "ctx",
     "control": "ctrl",
+    "copy": "cpy",
     "database": "db",
     "(define|definition)": "def",
     "description": "desc",
@@ -296,7 +297,7 @@ abbreviation = {
     "javascript": "js",
     "keyword": "kw",
     "keyword arguments": "kwargs",
-    "language": "lng",
+    "language": "lang",
     "library": "lib",
     "length": "len",
     "message": "msg",
@@ -357,6 +358,10 @@ vocabulary = {
 		"(them|vim)": "vim",
 		"(month|mutt)": "mutt",
 		"github username": "matthewvilim",
+		"argon": "argon",
+		"spatial": "spatial",
+		"scala": "scala",
+		"fee foe": "fifo",
 }
 
 class WordRule(MappingRule):

@@ -71,6 +71,7 @@ class TerminalRule(MappingRule):
         prefix + "VPN": Text("vpn"),
         prefix + "less": Text("less "),
         prefix + "GTK wave": Text("gtkwave "),
+        prefix + "ping": Text("ping "),
     }
     extras = [
         Dictation("text"),

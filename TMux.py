@@ -1,7 +1,7 @@
 from aenea import *
 
 class TMuxRule(MappingRule):
-    prefix = "mux "
+    prefix = "(mucks|box|monks) "
     tmuxPrefix = "c-b"
     mapping = {
         prefix + "next": Key(tmuxPrefix + ", n"),
@@ -20,7 +20,7 @@ class TMuxRule(MappingRule):
     }
     extras = [
         Dictation("text"),
-        IntegerRef("n", 0, 10),
+        IntegerRef("n", 0, 5),
     ]
     defaults = {
         "n": 1,
