@@ -38,7 +38,7 @@ letterMap.update(upperLetterMap)
 
 symbolMap = {
     "spike": "bar",
-    "dash": "hyphen",
+    "minus": "hyphen",
     "dot": "dot",
     "comma": "comma",
     "blash": "backslash",
@@ -54,7 +54,7 @@ symbolMap = {
     "percy": "percent",
     "amper": "ampersand",
     "slash": "slash",
-    "equal": "equal",
+    "quall": "equal",
     "plus": "plus",
     "clamor": "exclamation",
     "quest": "question",
@@ -66,13 +66,12 @@ symbolMap = {
     "race": "rbrace",
     "lack": "lbracket",
     "rack": "rbracket",
-    "lair": "lparen",
-    "rare": "rparen",
+    "len": "lparen",
+    "ren": "rparen",
     "slap": "enter",
     "ace": "space",
     "tab": "tab",
 }
-letterMap.update(symbolMap)
 
 keyMap = {
     'F one': 'f1',
@@ -96,10 +95,16 @@ keyMap = {
     'page down': 'pgdown',
 }
 
+repeatMap = {
+  "wink": 2,
+  "blink": 3
+}
+
 class KeyboardRule(MappingRule):
     mapping = {
-        "<letters>": Key("%(letters)s"),
-        "<letters> wink": Key("%(letters)s:2"),
+        "<letters> [<repeat>]": Key("%(letters)s:%(repeat)d"),
+        "<symbols> [<repeat>]": Key("%(symbols)s:%(repeat)d"),
+        "<symbols> [<repeat>] gap": Key("space, %(symbols)s:%(repeat)d, space"),
         "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "cape": Key("escape"),
@@ -114,8 +119,11 @@ class KeyboardRule(MappingRule):
         IntegerRef("n", 1, 50),
         IntegerRef("num", 0, 10000),
         Choice("letters", letterMap),
+        Choice("symbols", symbolMap),
         Choice("key", keyMap),
+        Choice("repeat", repeatMap),
     ]
     defaults = {
         "n": 1,
+        "repeat": 1,
     }

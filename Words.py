@@ -237,8 +237,8 @@ def lowercase_text(text):
 
 formatMap = {
     "(sentence|sense|since)": FormatTypes.sentenceCase,
-    "camel": FormatTypes.camelCase,
-    "prop": FormatTypes.pascalCase,
+    "cam": FormatTypes.camelCase,
+    "pass": FormatTypes.pascalCase,
     "snake": FormatTypes.snakeCase,
     "yell snake": [FormatTypes.snakeCase, FormatTypes.upperCase],
     "yell": FormatTypes.upperCase,
@@ -320,6 +320,7 @@ abbreviation = {
     "query string": "qs",
     "reference": "ref",
     "references": "refs",
+    "register": "reg",
     "(represent|representation)": "repr",
     "regular (expression|expressions)": "regex",
     "request": "req",
@@ -360,15 +361,15 @@ vocabulary = {
 		"github username": "matthewvilim",
 		"argon": "argon",
 		"spatial": "spatial",
-		"scala": "scala",
-		"fee foe": "fifo",
+		"(scala|scholar)": "scala",
+		"queue": "fifo",
 }
 
 class WordRule(MappingRule):
     mapping = {
-				"<formatType> <text>": Function(format_text),
+				"<formatType> <text> [clash]": Function(format_text),
 				"[<formatType>] brief <brief>": Function(format_brief, formatType=FormatTypes.lowerCase),
-				"[<formatType>] vocab <vocab>": Function(format_vocab, formatType=FormatTypes.lowerCase),
+				"[<formatType>] cab <vocab>": Function(format_vocab, formatType=FormatTypes.lowerCase),
 				"scratch that": Function(format_scratch),
     }
     extras = [
