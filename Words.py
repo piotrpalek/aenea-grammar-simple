@@ -228,20 +228,20 @@ def lowercase_text(text):
     newText = format_lower_case(text)
     Text("%(text)s").execute({"text": newText})
 
-caseMap = {
-    "yell": FormatTypes.upperCase,
-    "whisper": FormatTypes.lowerCase,
-}
-
 formatMap = {
     "(sentence|sense|since)": FormatTypes.sentenceCase,
     "camel": FormatTypes.camelCase,
     "prop": FormatTypes.pascalCase,
     "snake": FormatTypes.snakeCase,
     "yell snake": [FormatTypes.snakeCase, FormatTypes.upperCase],
+    "yell": FormatTypes.upperCase,
+    "whisper": FormatTypes.lowerCase,
     "squash": FormatTypes.squash,
+    "yell squash": [FormatTypes.squash, FormatTypes.upperCase],
     "dashify": FormatTypes.dashify,
+    "yell dashify": [FormatTypes.dashify, FormatTypes.upperCase],
     "dotify": FormatTypes.dotify,
+    "yell dotify": [FormatTypes.dotify, FormatTypes.upperCase],
     "say": FormatTypes.spokenForm,
 }
 
@@ -355,13 +355,12 @@ vocabulary = {
 class WordRule(MappingRule):
     mapping = {
 				"<formatType> <text>": Function(format_text),
-				"<formatType> brief <brief>": Function(format_brief),
-				"<formatType> vocab <vocab>": Function(format_vocab),
+				"[<formatType>] brief <brief>": Function(format_brief, formatType=FormatTypes.lowerCase),
+				"[<formatType>] vocab <vocab>": Function(format_vocab, formatType=FormatTypes.lowerCase),
     }
     extras = [
         Dictation("text"),
 				Choice("formatType", formatMap),
-				Choice("caseType", caseMap),
         Choice('brief', abbreviation),
         Choice('vocab', vocabulary),
     ]
