@@ -9,6 +9,7 @@ class VimRule(MappingRule):
         prefix + "force quit": Text(":q!\n"),
         prefix + "vertical split": Text(":vs "),
         prefix + "no highlight": Text(":noh\n"),
+        prefix + "toggle": Key("c-w, w"),
     }
     extras = [
         Dictation("text"),

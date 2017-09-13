@@ -74,7 +74,7 @@ def format_dashify(text):
     for word in words:
         if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
             word = "-" + word  # Adds dashes between normal words.
-        newText += word
+        newText += word.lower()
     return newText
 
 
@@ -84,7 +84,7 @@ def format_dotify(text):
     for word in words:
         if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
             word = "." + word  # Adds dashes between normal words.
-        newText += word
+        newText += word.lower()
     return newText
 
 
@@ -92,7 +92,7 @@ def format_squash(text):
     newText = ""
     words = strip_dragon_info(text)
     for word in words:
-        newText = '%s%s' % (newText, word)
+        newText = '%s%s' % (newText, word.lower())
     return newText
 
 
