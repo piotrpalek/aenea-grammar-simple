@@ -6,6 +6,11 @@ from dragonfly.actions.typeables import typeables
 if 'semicolon' not in typeables:
   typeables["semicolon"] = keyboard.get_typeable(char=';')
 
+appCommand = {
+    "chrome": "chromium-browser",
+    "spotify": "spotify",
+}
+
 class WindowManagerRule(MappingRule):
     modKey = "a"
     winPrefix = "win"
@@ -26,10 +31,12 @@ class WindowManagerRule(MappingRule):
         winPrefix + " term": Key(modKey + "-enter"),
         winPrefix + " close": Key(modKey + "-q"),
         winPrefix + " launch": Key(modKey + "-d"),
+        winPrefix + " launch <appCommand>": Key(modKey + "-d") + Text("%(appCommand)s") + Key("enter"),
     }
     extras = [
         Dictation("text"),
         IntegerRef("n", 0, 10),
+        Choice("appCommand", appCommand),
     ]
     defaults = {
         "n": 1,

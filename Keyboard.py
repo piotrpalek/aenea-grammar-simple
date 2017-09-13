@@ -70,7 +70,7 @@ symbolMap = {
     "rare": "rparen",
     "slap": "enter",
     "ace": "space",
-    "tarp": "tab",
+    "tab": "tab",
 }
 letterMap.update(symbolMap)
 

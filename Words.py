@@ -158,7 +158,9 @@ def format_brief(brief, formatType=None):
 def format_vocab(vocab, formatType=None):
 		format_text(vocab, formatType)
 
+lastFormatLength = 0
 def format_text(text, formatType=None):
+    global lastFormatLength
     if formatType:
         if type(formatType) != type([]):
             formatType = [formatType]
@@ -173,6 +175,11 @@ def format_text(text, formatType=None):
             method = FORMAT_TYPES_MAP[value]
             result = method(result)
         Text("%(text)s").execute({"text": result})
+        lastFormatLength = len(result)
+
+def format_scratch():
+    global lastFormatLength
+    Key("backspace:" + str(lastFormatLength)).execute()
 
 
 def camel_case_text(text):
@@ -357,6 +364,7 @@ class WordRule(MappingRule):
 				"<formatType> <text>": Function(format_text),
 				"[<formatType>] brief <brief>": Function(format_brief, formatType=FormatTypes.lowerCase),
 				"[<formatType>] vocab <vocab>": Function(format_vocab, formatType=FormatTypes.lowerCase),
+				"scratch that": Function(format_scratch),
     }
     extras = [
         Dictation("text"),
