@@ -38,7 +38,7 @@ letterMap.update(upperLetterMap)
 
 symbolMap = {
     "spike": "bar",
-    "minus": "hyphen",
+    "mine": "hyphen",
     "dot": "dot",
     "comma": "comma",
     "blash": "backslash",

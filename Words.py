@@ -363,6 +363,7 @@ vocabulary = {
 		"spatial": "spatial",
 		"(scala|scholar)": "scala",
 		"queue": "fifo",
+		"tucson": "tucson",
 }
 
 class WordRule(MappingRule):
