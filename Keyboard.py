@@ -21,7 +21,7 @@ letterMap = {
     "poke": "p",
     "queen": "q",
     "ram": "r",
-    "soy": "s",
+    "sink": "s",
     "tay": "t",
     "unit": "u",
     "verge": "v",
@@ -31,29 +31,24 @@ letterMap = {
     "zoo": "z",
 }
 
-upperLetterMap = {}
-for letter in letterMap:
-    upperLetterMap["sky " + letter] = letterMap[letter].upper()
-letterMap.update(upperLetterMap)
-
 symbolMap = {
     "spike": "bar",
     "mine": "hyphen",
     "dot": "dot",
-    "comma": "comma",
-    "blash": "backslash",
+    "drip": "comma",
+    "crazy": "backslash",
     "score": "underscore",
     "star": "asterisk",
     "coal": "colon",
     "soul": "semicolon",
     "loco": "at",
     "quote": "dquote",
-    "sote": "squote",
-    "hash": "hash",
+    "smote": "squote",
+    "pounder": "hash",
     "dolly": "dollar",
     "percy": "percent",
     "amper": "ampersand",
-    "slash": "slash",
+    "lazy": "slash",
     "equal": "equal",
     "plus": "plus",
     "clamor": "exclamation",
@@ -75,11 +70,17 @@ symbolMap = {
 
 def formatGap(symbols, repeat, gap):
     format = "%(s)s:%(r)d"
-    if gap:
-        if symbols in operators:
-            format = "space, " + format
+    if gap == GapTypes.gap or gap == GapTypes.lap:
+        format = "space, " + format
+    if gap == GapTypes.gap or gap == GapTypes.rap:
         format = format + ", space"
     Key(format).execute({"s": symbols, "r": repeat})
+
+def formatLetter(sky, letters, repeat):
+    l = letters
+    if sky:
+        l = letters.upper()
+    Key("%(l)s:%(r)d").execute({"l": l, "r": repeat})
 
 operators = [
     "bar",
@@ -119,20 +120,31 @@ repeatMap = {
   "blink": 3
 }
  
+class GapTypes:
+    lap = 1
+    rap = 2
+    gap = 3
+    none = 4
+
 gapMap = {
-    "gap": True,
+    "lash": GapTypes.lap,
+    "rash": GapTypes.rap,
+    "gash": GapTypes.gap,
+}
+
+skyMap = {
+    "sky": True,
 }
 
 class KeyboardRule(MappingRule):
     mapping = {
-        "<letters> [<repeat>]": Key("%(letters)s:%(repeat)d"),
+        "[<sky>] <letters> [<repeat>]": Function(formatLetter),
         "<symbols> [<repeat>] [<gap>]": Function(formatGap),
         "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "cape": Key("escape"),
         "key <key>": Key("%(key)s"),
         "train": Key("ctrl:down/3"),
-        "alt": Key("alt:down/3"),
     }
     extras = [
         Dictation("text"),
@@ -143,9 +155,11 @@ class KeyboardRule(MappingRule):
         Choice("key", keyMap),
         Choice("repeat", repeatMap),
         Choice("gap", gapMap),
+        Choice("sky", skyMap),
     ]
     defaults = {
         "n": 1,
         "repeat": 1,
-        "gap": False,
+        "gap": GapTypes.none,
+        "sky": False,
     }

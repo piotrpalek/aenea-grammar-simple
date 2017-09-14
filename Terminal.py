@@ -41,6 +41,13 @@ aptCommand = {}
 for command in aptCommandArray:
     aptCommand[command] = command
 
+def directoryUp(n=1):
+    command = "cd "
+    s = "../"
+    for i in range(0, n):
+        command = command + s
+    Text("%(command)s").execute({"command": command})
+
 class TerminalRule(MappingRule):
     prefix = "term "
     mapping = {
@@ -48,7 +55,7 @@ class TerminalRule(MappingRule):
         prefix + "apt <aptCommand>": Text("apt %(aptCommand)s "),
         prefix + "(them|vim)": Text("vim "),
         prefix + "dear": Text("cd "),
-        prefix + "dear up": Text("cd .."),
+        prefix + "dear up [<n>]": Function(directoryUp),
         prefix + "copy": Text("cp "),
         prefix + "list": Text("ls "),
         prefix + "make": Text("make "),
@@ -75,7 +82,11 @@ class TerminalRule(MappingRule):
     }
     extras = [
         Dictation("text"),
+        IntegerRef("n", 1, 8),
         Choice('aptCommand', aptCommand),
         Choice('gitCommand', gitCommand),
         Choice('tmuxCommand', tmuxCommand),
     ]
+    default = {
+        "n": 1,
+    }

@@ -1,4 +1,5 @@
 from aenea import *
+import Keyboard
 
 class FormatTypes:
     camelCase = 1
@@ -174,7 +175,9 @@ def format_text(text, formatType, gap):
                     result = str(text)
             method = FORMAT_TYPES_MAP[value]
             result = method(result)
-        if gap:
+        if gap == Keyboard.GapTypes.gap or gap == Keyboard.GapTypes.lap:
+            result = " " + result
+        if gap == Keyboard.GapTypes.gap or gap == Keyboard.GapTypes.rap:
             result = result + " "
         Text("%(text)s").execute({"text": result})
         lastFormatLength = len(result)
@@ -240,7 +243,7 @@ def lowercase_text(text):
 formatMap = {
     "(sentence|sense|since)": FormatTypes.sentenceCase,
     "camel": FormatTypes.camelCase,
-    "pascal": FormatTypes.pascalCase,
+    "pacify": FormatTypes.pascalCase,
     "snake": FormatTypes.snakeCase,
     "yell snake": [FormatTypes.snakeCase, FormatTypes.upperCase],
     "yell": FormatTypes.upperCase,
@@ -368,13 +371,9 @@ vocabulary = {
 		"tucson": "tucson",
 }
 
-gapMap = {
-    "gap": True,
-}
-
 class WordRule(MappingRule):
     mapping = {
-				"<formatType> <text> [clash] [<gap>]": Function(format_text),
+				"<formatType> <text> [break] [<gap>]": Function(format_text),
 				"[<formatType>] brief <brief> [<gap>]": Function(format_brief),
 				"[<formatType>] cab <vocab> [<gap>]": Function(format_vocab),
 				"scratch that": Function(format_scratch),
@@ -384,9 +383,9 @@ class WordRule(MappingRule):
 				Choice("formatType", formatMap),
         Choice('brief', abbreviation),
         Choice('vocab', vocabulary),
-        Choice('gap', gapMap),
+        Choice('gap', Keyboard.gapMap),
     ]
     defaults = {
         "formatType": FormatTypes.lowerCase,
-        "gap": False,
+        "gap": Keyboard.GapTypes.none,
     }
