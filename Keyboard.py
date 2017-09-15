@@ -3,31 +3,31 @@
 from aenea import *
 
 letterMap = {
-    "ark": "a",
+    "arc": "a",
     "brave": "b",
     "carve": "c",
     "dive": "d",
     "edge": "e",
     "fox": "f",
-    "gag": "g",
+    "gauge": "g",
     "hit": "h",
     "inch": "i",
     "jab": "j",
-    "kin": "k",
+    "kick": "k",
     "lime": "l",
     "mike": "m",
-    "noy": "n",
-    "osh": "o",
+    "noun": "n",
+    "ork": "o",
     "poke": "p",
     "queen": "q",
     "ram": "r",
     "sink": "s",
-    "tay": "t",
+    "tear": "t",
     "unit": "u",
     "verge": "v",
     "whisk": "w",
     "xerox": "x",
-    "yarn": "y",
+    "yank": "y",
     "zoo": "z",
 }
 
@@ -64,7 +64,7 @@ symbolMap = {
     "len": "lparen",
     "ren": "rparen",
     "slap": "enter",
-    "ace": "space",
+    "gap": "space",
     "tab": "tab",
 }
 
@@ -133,7 +133,7 @@ gapMap = {
 }
 
 skyMap = {
-    "sky": True,
+    "yell": True,
 }
 
 class KeyboardRule(MappingRule):
@@ -142,7 +142,7 @@ class KeyboardRule(MappingRule):
         "<symbols> [<repeat>] [<gap>]": Function(formatGap),
         "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
-        "cape": Key("escape"),
+        "break": Key("escape"),
         "key <key>": Key("%(key)s"),
         "train": Key("ctrl:down/3"),
     }

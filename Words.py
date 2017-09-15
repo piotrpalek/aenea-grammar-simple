@@ -357,11 +357,13 @@ vocabulary = {
 		"ubuntu": "ubuntu",
 		"github": "github",
 		"username": "mvilim",
+		"stanford username": "mvilim",
 		"name": "matthew vilim",
 		"nickname": "matt",
 		"first name": "matthew",
 		"last name": "vilim",
 		"(them|vim)": "vim",
+		"(get|git)": "git",
 		"(month|mutt)": "mutt",
 		"github username": "matthewvilim",
 		"argon": "argon",
@@ -373,7 +375,7 @@ vocabulary = {
 
 class WordRule(MappingRule):
     mapping = {
-				"<formatType> <text> [break] [<gap>]": Function(format_text),
+				"<formatType> <text> [cape] [<gap>]": Function(format_text),
 				"[<formatType>] brief <brief> [<gap>]": Function(format_brief),
 				"[<formatType>] cab <vocab> [<gap>]": Function(format_vocab),
 				"scratch that": Function(format_scratch),

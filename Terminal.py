@@ -30,6 +30,8 @@ tmuxCommand= {
     'new': 'new',
     'list': 'ls',
     'attach': 'attach',
+    'detach': 'detach',
+    'kill session': 'kill-session',
 }
 
 aptCommandArray = [
@@ -49,7 +51,7 @@ def directoryUp(n=1):
     Text("%(command)s").execute({"command": command})
 
 class TerminalRule(MappingRule):
-    prefix = "term "
+    prefix = "shell "
     mapping = {
         prefix + "sudo": Text("sudo "),
         prefix + "apt <aptCommand>": Text("apt %(aptCommand)s "),
