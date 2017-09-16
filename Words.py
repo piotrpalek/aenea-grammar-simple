@@ -254,7 +254,7 @@ formatMap = {
     "yell dashify": [FormatTypes.dashify, FormatTypes.upperCase],
     "dotify": FormatTypes.dotify,
     "yell dotify": [FormatTypes.dotify, FormatTypes.upperCase],
-    "say": FormatTypes.spokenForm,
+    "dictate": FormatTypes.spokenForm,
 }
 
 abbreviation = {
@@ -278,8 +278,10 @@ abbreviation = {
     "(config|configuration)": "cfg",
     "context": "ctx",
     "control": "ctrl",
+    "see plus plus": "cpp",
     "copy": "cpy",
     "database": "db",
+    "debug": "dbg",
     "(define|definition)": "def",
     "description": "desc",
     "(develop|development)": "dev",
@@ -287,6 +289,7 @@ abbreviation = {
     "(direction|directory)": "dir",
     "dynamic": "dyn",
     "education": "edu",
+    "enqueue": "enq",
     "example": "ex",
     "execute": "exec",
     "exception": "exc",
@@ -295,7 +298,8 @@ abbreviation = {
     "function": "func",
     "framework": "fw",
     "(initialize|initializer)": "init",
-    "instance": "inst",
+    "input output": "io",
+    "(instance|instruction)": "inst",
     "integer": "int",
     "iterate": "iter",
     "java archive": "jar",
@@ -304,6 +308,7 @@ abbreviation = {
     "keyword arguments": "kwargs",
     "language": "lang",
     "library": "lib",
+    "line": "ln",
     "length": "len",
     "message": "msg",
     "memory": "mem",
@@ -329,6 +334,7 @@ abbreviation = {
     "(represent|representation)": "repr",
     "regular (expression|expressions)": "regex",
     "request": "req",
+    "response": "resp",
     "revision": "rev",
     "ruby": "rb",
     "session aidee": "sid",  # "session id" didn't work for some reason.
@@ -349,10 +355,12 @@ abbreviation = {
     "temporary": "tmp",
     "text": "txt",
     "value": "val",
+    "valid": "vld",
     "window": "win",
 }
 
 vocabulary = {
+		"D ram": "dram",
 		"linux": "linux",
 		"ubuntu": "ubuntu",
 		"github": "github",
@@ -375,7 +383,7 @@ vocabulary = {
 
 class WordRule(MappingRule):
     mapping = {
-				"<formatType> <text> [cape] [<gap>]": Function(format_text),
+				"<formatType> <text> [stop] [<gap>]": Function(format_text),
 				"[<formatType>] brief <brief> [<gap>]": Function(format_brief),
 				"[<formatType>] cab <vocab> [<gap>]": Function(format_vocab),
 				"scratch that": Function(format_scratch),

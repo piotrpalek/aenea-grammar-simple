@@ -11,6 +11,7 @@ import Vim
 import WindowManager
 import Abbreviate
 import Vocabulary
+import Scala
 
 release = Key("shift:up, ctrl:up, alt:up")
 
@@ -21,6 +22,7 @@ alternatives.append(RuleRef(rule=Words.WordRule()))
 alternatives.append(RuleRef(rule=Terminal.TerminalRule()))
 alternatives.append(RuleRef(rule=Vim.VimRule()))
 alternatives.append(RuleRef(rule=WindowManager.WindowManagerRule()))
+alternatives.append(RuleRef(rule=Scala.ScalaRule()))
 root_action = Alternative(alternatives)
 
 sequence = Repetition(root_action, min=1, max=16, name="sequence")
