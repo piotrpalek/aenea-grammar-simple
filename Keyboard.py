@@ -17,7 +17,7 @@ letterMap = {
     "lime": "l",
     "mike": "m",
     "noun": "n",
-    "ork": "o",
+    "oath": "o",
     "poke": "p",
     "queen": "q",
     "ram": "r",
@@ -27,7 +27,7 @@ letterMap = {
     "verge": "v",
     "whisk": "w",
     "xerox": "x",
-    "yank": "y",
+    "yarn": "y",
     "zoo": "z",
 }
 
@@ -68,7 +68,7 @@ symbolMap = {
     "tab": "tab",
 }
 
-def formatGap(symbols, repeat, gap):
+def formatSymbol(symbols, repeat, gap):
     format = "%(s)s:%(r)d"
     if gap == GapTypes.gap or gap == GapTypes.lap:
         format = "space, " + format
@@ -76,22 +76,16 @@ def formatGap(symbols, repeat, gap):
         format = format + ", space"
     Key(format).execute({"s": symbols, "r": repeat})
 
-def formatLetter(sky, letters, repeat):
+def formatLetter(sky, letters, repeat, gap):
+    format = "%(l)s:%(r)d"
+    if gap == GapTypes.gap or gap == GapTypes.lap:
+        format = "space, " + format
+    if gap == GapTypes.gap or gap == GapTypes.rap:
+        format = format + ", space"
     l = letters
     if sky:
         l = letters.upper()
-    Key("%(l)s:%(r)d").execute({"l": l, "r": repeat})
-
-operators = [
-    "bar",
-    "hyphen",
-    "asterisk",
-    "percent",
-    "slash",
-    "equal",
-    "plus",
-    "caret",
-]
+    Key(format).execute({"l": l, "r": repeat})
 
 keyMap = {
     'F one': 'f1',
@@ -117,7 +111,8 @@ keyMap = {
 
 repeatMap = {
   "wink": 2,
-  "blink": 3
+  "blink": 3,
+  "squint": 4
 }
  
 class GapTypes:
@@ -133,18 +128,18 @@ gapMap = {
 }
 
 skyMap = {
-    "yell": True,
+    "sky": True,
 }
 
 class KeyboardRule(MappingRule):
     mapping = {
-        "[<sky>] <letters> [<repeat>]": Function(formatLetter),
-        "<symbols> [<repeat>] [<gap>]": Function(formatGap),
+        "[<sky>] <letters> [<repeat>] [<gap>]": Function(formatLetter),
+        "<symbols> [<repeat>] [<gap>]": Function(formatSymbol),
         "numb <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "break": Key("escape"),
         "key <key>": Key("%(key)s"),
-        "train": Key("ctrl:down/3"),
+        "troll": Key("ctrl:down/3"),
     }
     extras = [
         Dictation("text"),
