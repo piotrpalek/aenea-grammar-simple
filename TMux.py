@@ -15,7 +15,7 @@ class TMuxRule(MappingRule):
         prefix + "full": Key(tmuxPrefix + ", z"),
         prefix + "vertical split": Key(tmuxPrefix + ", dquote"),
         prefix + "horizontal split": Key(tmuxPrefix + ", percent"),
-        prefix + "toggle": Key(tmuxPrefix + ", o"),
+        prefix + "switch": Key(tmuxPrefix + ", o"),
         prefix + "scroll": Key(tmuxPrefix + ", lbracket"),
     }
     extras = [
