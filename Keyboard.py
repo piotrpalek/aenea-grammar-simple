@@ -3,11 +3,11 @@
 from aenea import *
 
 letterMap = {
-    "arc": "a",
+    "arch": "a",
     "brave": "b",
     "carve": "c",
     "dive": "d",
-    "edge": "e",
+    "echo": "e",
     "fox": "f",
     "gauge": "g",
     "hit": "h",
@@ -24,7 +24,7 @@ letterMap = {
     "sink": "s",
     "tear": "t",
     "unit": "u",
-    "verge": "v",
+    "voice": "v",
     "whisk": "w",
     "xerox": "x",
     "yarn": "y",
@@ -135,7 +135,7 @@ class KeyboardRule(MappingRule):
     mapping = {
         "[<sky>] <letters> [<repeat>] [<gap>]": Function(formatLetter),
         "<symbols> [<repeat>] [<gap>]": Function(formatSymbol),
-        "numb <num>": Text("%(num)d"),
+        "count <num>": Text("%(num)d"),
         "scratch [<n>]": Key("backspace:%(n)d"),
         "break": Key("escape"),
         "key <key>": Key("%(key)s"),

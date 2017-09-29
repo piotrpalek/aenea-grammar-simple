@@ -9,6 +9,7 @@ gitCommandArray = [
     'clone',
     'commit',
     'diff',
+    'difftool',
     'fetch',
     'init',
     'log',
@@ -32,6 +33,11 @@ tmuxCommand= {
     'attach': 'attach',
     'detach': 'detach',
     'kill session': 'kill-session',
+}
+
+sbtCommand= {
+    'test': 'test',
+    'compile': 'compile',
 }
 
 aptCommandArray = [
@@ -80,6 +86,7 @@ class TerminalRule(MappingRule):
         prefix + "VPN": Text("vpn"),
         prefix + "less": Text("less "),
         prefix + "GTK wave": Text("gtkwave "),
+        prefix + "SBT <sbtCommand>": Text("sbt %(sbtCommand)s "),
         prefix + "ping": Text("ping "),
     }
     extras = [
@@ -88,6 +95,7 @@ class TerminalRule(MappingRule):
         Choice('aptCommand', aptCommand),
         Choice('gitCommand', gitCommand),
         Choice('tmuxCommand', tmuxCommand),
+        Choice('sbtCommand', sbtCommand),
     ]
     default = {
         "n": 1,
