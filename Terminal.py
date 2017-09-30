@@ -67,7 +67,7 @@ class TerminalRule(MappingRule):
         prefix + "copy": Text("cp "),
         prefix + "list": Text("ls "),
         prefix + "make": Text("make "),
-        prefix + "man": Text("man "),
+        prefix + "manual": Text("man "),
         prefix + "mutt": Text("mutt "),
         prefix + "(grep|grip)": Text("grep "),
         prefix + "move": Text("mv "),
@@ -88,6 +88,8 @@ class TerminalRule(MappingRule):
         prefix + "GTK wave": Text("gtkwave "),
         prefix + "SBT <sbtCommand>": Text("sbt %(sbtCommand)s "),
         prefix + "ping": Text("ping "),
+        prefix + "working directory": Text("pwd "),
+        prefix + "Z shell": Text("zsh "),
     }
     extras = [
         Dictation("text"),

@@ -3,7 +3,7 @@
 from aenea import *
 
 letterMap = {
-    "arch": "a",
+    "able": "a",
     "brave": "b",
     "carve": "c",
     "dive": "d",
@@ -34,7 +34,7 @@ letterMap = {
 symbolMap = {
     "spiker": "bar",
     "miner": "hyphen",
-    "sip": "dot",
+    "drop": "dot",
     "drip": "comma",
     "crazy": "backslash",
     "score": "underscore",
@@ -65,7 +65,7 @@ symbolMap = {
     "ren": "rparen",
     "slap": "enter",
     "gap": "space",
-    "tab": "tab",
+    "torque": "tab",
 }
 
 def formatSymbol(symbols, repeat, gap):
@@ -140,6 +140,7 @@ class KeyboardRule(MappingRule):
         "break": Key("escape"),
         "key <key>": Key("%(key)s"),
         "troll": Key("ctrl:down/3"),
+        "train": Key("alt:down/3"),
     }
     extras = [
         Dictation("text"),

@@ -13,7 +13,7 @@ appCommand = {
 
 class WindowManagerRule(MappingRule):
     modKey = "a"
-    winPrefix = "win"
+    winPrefix = "pain"
     mapping = {
         winPrefix + " <n>": Key(modKey + "-%(n)d"),
         winPrefix + " left [<n>]": Key(modKey + "-h:%(n)d"),
