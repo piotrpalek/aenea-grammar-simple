@@ -90,6 +90,9 @@ class TerminalRule(MappingRule):
         prefix + "ping": Text("ping "),
         prefix + "working directory": Text("pwd "),
         prefix + "Z shell": Text("zsh "),
+        prefix + "secure copy": Text("scp "),
+        prefix + "PDF latex": Text("pdflatex "),
+        prefix + "bibtex": Text("bibtex "),
     }
     extras = [
         Dictation("text"),

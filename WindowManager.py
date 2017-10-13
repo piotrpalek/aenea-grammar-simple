@@ -9,16 +9,17 @@ if 'semicolon' not in typeables:
 appCommand = {
     "chrome": "chromium-browser",
     "spotify": "spotify",
+    "PDF reader": "zathura",
 }
 
 class WindowManagerRule(MappingRule):
     modKey = "a"
-    winPrefix = "pain"
+    winPrefix = "(when|win)"
     mapping = {
         winPrefix + " <n>": Key(modKey + "-%(n)d"),
-        winPrefix + " left [<n>]": Key(modKey + "-h:%(n)d"),
+        "lake [<n>]": Key(modKey + "-h:%(n)d"),
         winPrefix + " move left [<n>]": Key(modKey + "s-h:%(n)d"),
-        winPrefix + " right [<n>]": Key(modKey + "-l:%(n)d"),
+        "rake [<n>]": Key(modKey + "-l:%(n)d"),
         winPrefix + " move right [<n>]": Key(modKey + "s-l:%(n)d"),
         winPrefix + " up [<n>]": Key(modKey + "-k:%(n)d"),
         winPrefix + " move up [<n>]": Key(modKey + "s-k:%(n)d"),
