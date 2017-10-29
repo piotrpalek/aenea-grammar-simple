@@ -159,6 +159,9 @@ def format_brief(brief, formatType, gap):
 def format_vocab(vocab, formatType, gap):
 		format_text(vocab, formatType, gap)
 
+def format_exception(exception, formatType, gap):
+		format_text(exception, formatType, gap)
+
 lastFormatLength = 0
 def format_text(text, formatType, gap):
     global lastFormatLength
@@ -296,6 +299,7 @@ abbreviation = {
     "education": "edu",
     "enable": "en",
     "enqueue": "enq",
+    "environment": "env",
     "example": "ex",
     "execute": "exec",
     "exception": "exc",
@@ -403,6 +407,7 @@ vocabulary = {
 		"tucson": "tucson",
 		"(lou|laura|lula)": "lua",
 		"null": "null",
+		"let": "let",
 		"nil": "nil",
 		"class": "class",
 		"true": "true",
@@ -455,9 +460,15 @@ vocabulary = {
 		"self": "self",
 }
 
+exception = {
+  "phil": "fill",
+  "pear": "pair",
+}
+
 class WordRule(MappingRule):
     mapping = {
 				"<formatType> <text> [stop] [<gap>]": Function(format_text),
+				"<formatType> <exception> [<gap>]": Function(format_exception),
 				"[<formatType>] brief <brief> [<gap>]": Function(format_brief),
 				"[<formatType>] cab <vocab> [<gap>]": Function(format_vocab),
 				"scratch that": Function(format_scratch),
@@ -466,6 +477,7 @@ class WordRule(MappingRule):
         Dictation("text"),
 				Choice("formatType", formatMap),
         Choice('brief', abbreviation),
+        Choice('exception', exception),
         Choice('vocab', vocabulary),
         Choice('gap', Keyboard.gapMap),
     ]

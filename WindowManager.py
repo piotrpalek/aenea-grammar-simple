@@ -10,11 +10,12 @@ appCommand = {
     "chrome": "chromium-browser",
     "spotify": "spotify",
     "PDF reader": "zathura",
+    "GTK wave": "gtkwave",
 }
 
 class WindowManagerRule(MappingRule):
     modKey = "a"
-    winPrefix = "(when|win)"
+    winPrefix = "pain"
     mapping = {
         winPrefix + " <n>": Key(modKey + "-%(n)d"),
         "lake [<n>]": Key(modKey + "-h:%(n)d"),
@@ -26,7 +27,7 @@ class WindowManagerRule(MappingRule):
         winPrefix + " down [<n>]": Key(modKey + "-j:%(n)d"),
         winPrefix + " move down [<n>]": Key(modKey + "s-j:%(n)d"),
         winPrefix + " lock": Key("alt") + Key("s-q"),
-        winPrefix + " full": Key(modKey + "-f"),
+        winPrefix + " max": Key(modKey + "-f"),
         winPrefix + " horizontal": Key(modKey + "-semicolon"),
         winPrefix + " vertical": Key(modKey + "-v"),
         winPrefix + " term": Key(modKey + "-enter"),

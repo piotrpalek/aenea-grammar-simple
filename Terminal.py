@@ -22,6 +22,7 @@ gitCommandArray = [
     'stash',
     'status',
     'tag',
+    'remote',
 ]
 gitCommand = {}
 for command in gitCommandArray:
@@ -38,6 +39,7 @@ tmuxCommand= {
 sbtCommand= {
     'test': 'test',
     'compile': 'compile',
+    'clean': 'clean',
 }
 
 aptCommandArray = [
@@ -65,6 +67,7 @@ class TerminalRule(MappingRule):
         prefix + "direct": Text("cd "),
         prefix + "direct up [<n>]": Function(directoryUp),
         prefix + "copy": Text("cp "),
+        prefix + "cat": Text("cat "),
         prefix + "list": Text("ls "),
         prefix + "make": Text("make "),
         prefix + "manual": Text("man "),
@@ -93,6 +96,7 @@ class TerminalRule(MappingRule):
         prefix + "secure copy": Text("scp "),
         prefix + "PDF latex": Text("pdflatex "),
         prefix + "bibtex": Text("bibtex "),
+        prefix + "bash": Text("bash "),
     }
     extras = [
         Dictation("text"),

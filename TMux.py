@@ -12,7 +12,7 @@ class TMuxRule(MappingRule):
         prefix + "<n>": Key(tmuxPrefix + ", %(n)d"),
         prefix + "pains": Key(tmuxPrefix + ", q"),
         prefix + "pain <n>": Key(tmuxPrefix + ", q, %(n)d"),
-        prefix + "full": Key(tmuxPrefix + ", z"),
+        prefix + "max": Key(tmuxPrefix + ", z"),
         prefix + "vertical split": Key(tmuxPrefix + ", dquote"),
         prefix + "horizontal split": Key(tmuxPrefix + ", percent"),
         prefix + "switch": Key(tmuxPrefix + ", o"),
