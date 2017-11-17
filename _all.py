@@ -9,7 +9,6 @@ import Words
 import Terminal
 import Vim
 import WindowManager
-import Chrome
 release = Key("shift:up, ctrl:up, alt:up")
 
 alternatives = []
@@ -19,7 +18,6 @@ alternatives.append(RuleRef(rule=Words.WordRule()))
 alternatives.append(RuleRef(rule=Terminal.TerminalRule()))
 alternatives.append(RuleRef(rule=Vim.VimRule()))
 alternatives.append(RuleRef(rule=WindowManager.WindowManagerRule()))
-alternatives.append(RuleRef(rule=Chrome.ChromeRule()))
 root_action = Alternative(alternatives)
 
 sequence = Repetition(root_action, min=1, max=16, name="sequence")
