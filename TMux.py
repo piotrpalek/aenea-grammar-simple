@@ -2,7 +2,7 @@ from aenea import *
 
 class TMuxRule(MappingRule):
     prefix = "tea "
-    tmuxPrefix = "c-b"
+    tmuxPrefix = "c-a"
     mapping = {
         prefix + "next": Key(tmuxPrefix + ", n"),
         prefix + "previous": Key(tmuxPrefix + ", p"),
