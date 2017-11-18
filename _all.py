@@ -7,7 +7,7 @@ import Keyboard
 import TMux
 import Words
 import Terminal
-import Vim
+import Spacemacs
 import WindowManager
 release = Key("shift:up, ctrl:up, alt:up")
 
@@ -16,7 +16,7 @@ alternatives.append(RuleRef(rule=Keyboard.KeyboardRule()))
 alternatives.append(RuleRef(rule=TMux.TMuxRule()))
 alternatives.append(RuleRef(rule=Words.WordRule()))
 alternatives.append(RuleRef(rule=Terminal.TerminalRule()))
-alternatives.append(RuleRef(rule=Vim.VimRule()))
+alternatives.append(RuleRef(rule=Spacemacs.SpacemacsRule()))
 alternatives.append(RuleRef(rule=WindowManager.WindowManagerRule()))
 root_action = Alternative(alternatives)
 
