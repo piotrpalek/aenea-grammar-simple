@@ -144,6 +144,7 @@ class KeyboardRule(MappingRule):
         "key <key> [<n1>]": Key("%(key)s:%(n1)d"),
         "tram": Key("ctrl:down/3"),
         "train": Key("alt:down/3"),
+        "shaft": Key("shift:down/3"),
     }
     extras = [
         Dictation("text"),
