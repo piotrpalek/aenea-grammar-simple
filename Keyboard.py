@@ -4,13 +4,13 @@ from aenea import *
 
 letterMap = {
     "able": "a",
-    "brave": "b",
+    "bravo": "b",
     "cave": "c",
     "dive": "d",
     "eagle": "e",
     "fox": "f",
-    "gauge": "g",
-    "hawk": "h",
+    "golf": "g",
+    "hoy": "h",
     "inch": "i",
     "jab": "j",
     "kick": "k",
@@ -28,7 +28,7 @@ letterMap = {
     "whisk": "w",
     "X": "x",
     "year": "y",
-    "zoo": "z",
+    "zoey": "z",
 }
 
 symbolMap = {
@@ -115,7 +115,7 @@ repeatMap = {
   "blink": 3,
   "squint": 4
 }
- 
+
 class GapTypes:
     lap = 1
     rap = 2
