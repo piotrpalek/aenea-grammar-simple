@@ -7,33 +7,31 @@ if 'semicolon' not in typeables:
   typeables["semicolon"] = keyboard.get_typeable(char=';')
 
 appCommand = {
-    "chrome": "chromium-browser",
+    "chrome": "google chrome",
+    "fox": "firefox",
     "spotify": "spotify",
-    "PDF reader": "zathura",
-    "GTK wave": "gtkwave",
+    "emacs": "emacs",
+    "term": "terminal",
+    "gedit": "gedit",
 }
 
-class WindowManagerRule(MappingRule):
-    modKey = "a"
+class Rule(MappingRule):
+    modKey = "cs"
+    winKey = "cw"
     winPrefix = "pain"
     mapping = {
-        winPrefix + " <n>": Key(modKey + "-%(n)d"),
         "lake [<n>]": Key(modKey + "-h:%(n)d"),
-        winPrefix + " move left [<n>]": Key(modKey + "s-h:%(n)d"),
-        "rake [<n>]": Key(modKey + "-l:%(n)d"),
-        winPrefix + " move right [<n>]": Key(modKey + "s-l:%(n)d"),
-        winPrefix + " up [<n>]": Key(modKey + "-k:%(n)d"),
-        winPrefix + " move up [<n>]": Key(modKey + "s-k:%(n)d"),
-        winPrefix + " down [<n>]": Key(modKey + "-j:%(n)d"),
-        winPrefix + " move down [<n>]": Key(modKey + "s-j:%(n)d"),
-        winPrefix + " lock": Key("alt") + Key("s-q"),
-        winPrefix + " max": Key(modKey + "-f"),
-        winPrefix + " horizontal": Key(modKey + "-semicolon"),
-        winPrefix + " vertical": Key(modKey + "-v"),
-        winPrefix + " term": Key(modKey + "-enter"),
-        winPrefix + " close": Key(modKey + "-q"),
-        winPrefix + " launch": Key(modKey + "-d"),
-        winPrefix + " launch <appCommand>": Key(modKey + "-d") + Text("%(appCommand)s") + Key("enter"),
+        "rake [<n>]": Key(modKey + "-n:%(n)d"),
+        winPrefix + " <n>": Key(winKey + "-%(n)d"),
+        winPrefix + " last": Key(winKey + "-end"),
+        winPrefix + " switch": Key("a-tab"),
+        winPrefix + " stick lake": Key("w-left"),
+        winPrefix + " stick rake": Key("w-right"),
+        winPrefix + " launch": Key("a-f2/10"),
+        winPrefix + " launch <appCommand>": Key("a-f2/0:1/100000") + Text("%(appCommand)s") + Key("enter"),
+        winPrefix + " move lake": Key("csa-left"),
+        winPrefix + " move rake": Key("csa-right"),
+        winPrefix + " kill": Key("a-f4"),
     }
     extras = [
         Dictation("text"),

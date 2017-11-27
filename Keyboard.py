@@ -12,9 +12,9 @@ letterMap = {
     "golf": "g",
     "hoy": "h",
     "inch": "i",
-    "jab": "j",
+    "jack": "j",
     "kick": "k",
-    "lime": "l",
+    "lisa": "l",
     "mike": "m",
     "noun": "n",
     "oath": "o",
@@ -132,7 +132,7 @@ skyMap = {
     "sky": True,
 }
 
-class KeyboardRule(MappingRule):
+class Rule(MappingRule):
     mapping = {
         "[<sky>] <letters> [<repeat>] [<gap>]": Function(formatLetter),
         "<symbols> [<repeat>] [<gap>]": Function(formatSymbol),

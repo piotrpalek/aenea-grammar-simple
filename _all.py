@@ -9,24 +9,11 @@ import Words
 import Terminal
 import Spacemacs
 import WindowManager
+import Browser
 release = Key("shift:up, ctrl:up, alt:up")
-
-alternatives = []
-alternatives.append(RuleRef(rule=Keyboard.KeyboardRule()))
-alternatives.append(RuleRef(rule=TMux.TMuxRule()))
-alternatives.append(RuleRef(rule=Words.WordRule()))
-alternatives.append(RuleRef(rule=Terminal.TerminalRule()))
-alternatives.append(RuleRef(rule=Spacemacs.SpacemacsRule()))
-alternatives.append(RuleRef(rule=WindowManager.WindowManagerRule()))
-root_action = Alternative(alternatives)
-
-sequence = Repetition(root_action, min=1, max=16, name="sequence")
 
 class RepeatRule(CompoundRule):
     spec = "<sequence>"
-    extras = [
-        sequence,
-    ]
 
     def _process_recognition(self, node, extras):
         sequence = extras["sequence"]
@@ -34,13 +21,28 @@ class RepeatRule(CompoundRule):
             action.execute()
         release.execute()
 
-grammar = Grammar("root rule")
-grammar.add_rule(RepeatRule())
-grammar.load()
+alternatives = [Keyboard, TMux, Words, Terminal, Spacemacs, WindowManager, Browser];
+grammars = []
+
+for index, RuleConfig in enumerate(alternatives):
+    sequence = Repetition(RuleRef(rule=RuleConfig.Rule()), min=1, max=16, name="sequence")
+    repeat_rule = RepeatRule(extras = [ sequence ])
+
+    grammar = None
+    if hasattr(RuleConfig, 'RuleContext'):
+        grammar = Grammar(str(index), context=RuleConfig.RuleContext)
+    else:
+        grammar = Grammar(str(index))
+    grammar.add_rule(repeat_rule)
+    grammar.load()
+    grammars.append(grammar)
+    grammar = None
 
 def unload():
     """Unload function which will be called at unload time."""
-    global grammar
-    if grammar:
-        grammar.unload()
-    grammar = None
+    print grammars
+
+    for grammar in grammars:
+        if grammar:
+            grammar.unload()
+        grammar = None

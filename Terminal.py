@@ -2,54 +2,30 @@
 
 from aenea import *
 
-gitCommandArray = [
-    'add',
-    'branch',
-    'checkout',
-    'clone',
-    'commit',
-    'diff',
-    'difftool',
-    'fetch',
-    'init',
-    'log',
-    'merge',
-    'pull',
-    'push',
-    'rebase',
-    'reset',
-    'show',
-    'stash',
-    'status',
-    'tag',
-    'remote',
-]
-gitCommand = {}
-for command in gitCommandArray:
-    gitCommand[command] = command
-
-tmuxCommand= {
-    'new': 'new',
-    'list': 'ls',
-    'attach': 'attach',
-    'detach': 'detach',
-    'kill session': 'kill-session',
+gitCommand = {
+    'add': 'add',
+    '(amen|amend)': 'commit --amend',
+    'branch': 'branch',
+    'checkout': 'checkout',
+    'clone': 'clone',
+    'commit': 'commit',
+    'diff': 'diff',
+    'difftool': 'difftool',
+    'fetch': 'fetch',
+    'init': 'init',
+    'log': 'log',
+    'log P': 'log -p',
+    'merge': 'merge',
+    'pull': 'pull',
+    'push': 'push',
+    'rebase': 'rebase',
+    'reset': 'reset',
+    'show': 'show',
+    'stash': 'stash',
+    'status': 'status',
+    'tag': 'tag',
+    'remote': 'remote -v',
 }
-
-sbtCommand= {
-    'test': 'test',
-    'compile': 'compile',
-    'clean': 'clean',
-}
-
-aptCommandArray = [
-    'update',
-    'install',
-    'remove',
-]
-aptCommand = {}
-for command in aptCommandArray:
-    aptCommand[command] = command
 
 def directoryUp(n=1):
     command = "cd "
@@ -58,11 +34,10 @@ def directoryUp(n=1):
         command = command + s
     Text("%(command)s").execute({"command": command})
 
-class TerminalRule(MappingRule):
-    prefix = "shell "
+class Rule(MappingRule):
+    prefix = ""
     mapping = {
         prefix + "sudo": Text("sudo "),
-        prefix + "apt <aptCommand>": Text("apt %(aptCommand)s "),
         prefix + "(them|vim)": Text("vim "),
         prefix + "direct": Text("cd "),
         prefix + "direct up [<n>]": Function(directoryUp),
@@ -71,41 +46,37 @@ class TerminalRule(MappingRule):
         prefix + "list": Text("ls "),
         prefix + "make": Text("make "),
         prefix + "manual": Text("man "),
-        prefix + "mutt": Text("mutt "),
-        prefix + "(grep|grip)": Text("grep "),
+        prefix + "age": Text("ag "),
         prefix + "move": Text("mv "),
         prefix + "remove": Text("rm "),
         prefix + "make direct": Text("mkdir "),
         prefix + "remove direct": Text("rmdir "),
         prefix + "(git|get) <gitCommand>": Text("git %(gitCommand)s "),
-        prefix + "see tags": Text("ctags"),
-        prefix + "tea (mucks|box|monks) <tmuxCommand>": Text("tmux %(tmuxCommand)s "),
         prefix + "mount": Text("mount "),
         prefix + "umount": Text("umount "),
-        prefix + "i three message": Text("i3-msg "),
         prefix + "SSH": Text("ssh "),
         prefix + "exit": Text("exit"),
         prefix + "change mode": Text("chmod "),
-        prefix + "VPN": Text("vpn"),
         prefix + "less": Text("less "),
-        prefix + "GTK wave": Text("gtkwave "),
-        prefix + "SBT <sbtCommand>": Text("sbt %(sbtCommand)s "),
         prefix + "ping": Text("ping "),
         prefix + "working directory": Text("pwd "),
         prefix + "Z shell": Text("zsh "),
         prefix + "secure copy": Text("scp "),
-        prefix + "PDF latex": Text("pdflatex "),
-        prefix + "bibtex": Text("bibtex "),
-        prefix + "bash": Text("bash "),
+        prefix + "(amber|ember)": Text("ember s"),
+        prefix + "commit APP <task>": Text("git commit -am ' [APP-%(task)d]'") + Key('c-b:2, left, left'),
+        prefix + "clean line": Key("c-a, c-a, c-k"),
+        prefix + "npm I": Text("npm i") + Key("enter"),
+        prefix + "pick fast": Text("zz") + Key("enter"),
+        prefix + "pick <n>": Text("%(n)d") + Key("enter"),
     }
     extras = [
         Dictation("text"),
         IntegerRef("n", 1, 8),
-        Choice('aptCommand', aptCommand),
+        DigitsRef("task"),
         Choice('gitCommand', gitCommand),
-        Choice('tmuxCommand', tmuxCommand),
-        Choice('sbtCommand', sbtCommand),
     ]
-    default = {
+    defaults = {
         "n": 1,
     }
+
+RuleContext = ProxyAppContext(title = "tmux")

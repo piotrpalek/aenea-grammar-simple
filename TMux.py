@@ -1,6 +1,6 @@
 from aenea import *
 
-class TMuxRule(MappingRule):
+class Rule(MappingRule):
     prefix = "tea "
     tmuxPrefix = "c-a"
     mapping = {
@@ -13,8 +13,8 @@ class TMuxRule(MappingRule):
         prefix + "pains": Key(tmuxPrefix + ", q"),
         prefix + "pain <n>": Key(tmuxPrefix + ", q, %(n)d"),
         prefix + "max": Key(tmuxPrefix + ", z"),
-        prefix + "vertical split": Key(tmuxPrefix + ", dquote"),
-        prefix + "horizontal split": Key(tmuxPrefix + ", percent"),
+        prefix + "split": Key(tmuxPrefix + ", hyphen"),
+        prefix + "horizontal split": Key(tmuxPrefix + ", bar"),
         prefix + "switch": Key(tmuxPrefix + ", o"),
         prefix + "scroll": Key(tmuxPrefix + ", lbracket"),
     }

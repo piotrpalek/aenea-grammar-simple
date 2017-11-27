@@ -459,25 +459,31 @@ vocabulary = {
 		"self": "self",
 }
 
+css = {
+    "flex": "flex"
+}
+
 exception = {
   "phil": "fill",
   "pear": "pair",
 }
 
-class WordRule(MappingRule):
+class Rule(MappingRule):
     mapping = {
 				"<formatType> <text> [stop] [<gap>]": Function(format_text),
 				"<formatType> <exception> [<gap>]": Function(format_exception),
 				"[<formatType>] brief <brief> [<gap>]": Function(format_brief),
 				"[<formatType>] cab <vocab> [<gap>]": Function(format_vocab),
+				"CSS <css>": Text("%(css)s"),
 				"scratch that": Function(format_scratch),
     }
     extras = [
         Dictation("text"),
-				Choice("formatType", formatMap),
+        Choice("formatType", formatMap),
         Choice('brief', abbreviation),
         Choice('exception', exception),
         Choice('vocab', vocabulary),
+        Choice('css', css),
         Choice('gap', Keyboard.gapMap),
     ]
     defaults = {
